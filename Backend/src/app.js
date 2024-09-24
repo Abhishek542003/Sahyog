@@ -11,11 +11,12 @@ app.use(express.urlencoded({limit:"16kb",extended:true}));
 app.use(express.static("public"));
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-    // Access cookies sent in the request
-    console.log(req.cookies); // Logs an object containing cookie names and values
-    res.send('Cookies retrieved!');
-});
+// Routes Import 
+
+import userRouter from "./routes/user.routes.js"
+
+// Routes Declaration 
+app.use("/api/v1/users",userRouter)
 
 export {app};
 
